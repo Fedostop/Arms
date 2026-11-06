@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Клан [TAG] | Stalcraft: X Wars</title>
+    <style>
+        /* --- НАСТРОЙКИ СТИЛЯ (CSS) --- */
+        :root {
+            --bg-color: #121212;       /* Очень темный фон */
+            --card-bg: #1e1e1e;        /* Фон карточек */
+            --accent: #ff9f1c;         /* Оранжевый акцент (Stalker style) */
+            --leader-color: #ffd700;   /* Золотой для лидеров */
+            --officer-color: #4da6ff;  /* Голубой для замов */
+            --text-main: #e0e0e0;
+            --text-dim: #a0a0a0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 0;
+            line-height: 1.5;
+        }
+
+        /* Шапка сайта */
+        header {
+            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('https://wallpapers.com/images/hd/stalker-game-background-1920x1080-8z9y5w4x3v2u1t0s.jpg');
+            background-size: cover;
+            background-position: center;
+            padding: 60px 20px;
+            text-align: center;
+            border-bottom: 3px solid var(--accent);
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin: 0;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 0 0 10px rgba(255, 159, 28, 0.5);
+        }
+
+        .subtitle {
+            color: var(--text-dim);
+            margin-top: 10px;
+            font-size: 1.1rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 30px 20px;
+        }
+
+        /* Сетка отрядов */
+        .squads-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        /* Карточка отряда */
+        .squad-card {
+            background-color: var(--card-bg);
+            border: 1px solid #333;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+            transition: transform 0.2s;
+        }
+
+        .squad-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent);
+        }
+
+        .squad-header {
+            background-color: #2a2a2a;
+            padding: 15px;
+            font-weight: bold;
+            font-size: 1.2rem;
+            border-bottom: 1px solid #444;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .squad-header span {
+            color: var(--accent);
+        }
+
+        .squad-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .squad-list li {
+            padding: 12px 20px;
+            border-bottom: 1px solid #2a2a2a;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .squad-list li:last-child {
+            border-bottom: none;
+        }
+
+        /* Стили для ролей */
+        .role {
+            font-size: 0.85rem;
+            font-weight: bold;
+            width: 110px;
+            text-transform: uppercase;
+        }
+
+        .nickname {
+            font-weight: 500;
+            text-align: right;
+        }
+
+        /* ЦВЕТА РОЛЕЙ */
+        .role-leader { 
+            color: var(--leader-color); 
+            text-shadow: 0 0 5px rgba(255, 215, 0, 0.3);
+        }
+        
+        .name-leader {
+            color: var(--leader-color);
+            font-weight: bold;
+            font-size: 1.05rem;
+        }
+
+        .role-officer { color: var(--officer-color); }
+        .role-member { color: #888; }
+        .role-reserve { color: #555; font-style: italic; }
+
+        /* Секция карт */
+        .maps-section {
+            margin-top: 60px;
+            text-align: center;
+            padding-bottom: 40px;
+        }
+        
+        .maps-title {
+            color: var(--accent);
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+
+        .map-tags {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .map-tag {
+            background: #2a2a2a;
+            padding: 12px 25px;
+            border-radius: 8px;
+            border: 1px solid var(--accent);
+            color: var(--accent);
+            font-weight: bold;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            display: inline-block;
+        }
+
+        .map-tag:hover {
+            background: var(--accent);
+            color: #000;
+            box-shadow: 0 0 15px rgba(255, 159, 28, 0.4);
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px;
+            color: #555;
+            font-size: 0.9rem;
+            border-top: 1px solid #222;
+        }
+
+        @media (max-width: 600px) {
+            h1 { font-size: 1.8rem; }
+            .squads-grid { grid-template-columns: 1fr; }
+            .map-tag { width: 100%; box-sizing: border-box; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <!-- ЗАМЕНИ НАЗВАНИЕ КЛАНА ЗДЕСЬ -->
+        <h1>[НАЗВАНИЕ КЛАНА]</h1> 
+        <div class="subtitle">Состав отрядов | Клановые войны STALCRAFT: X</div>
+    </header>
+
+    <div class="container">
+        
+        <!-- СЕКЦИЯ ОТРЯДОВ -->
+        <div class="squads-grid">
+
+            <!-- ОТРЯД 1: БОЕВКА 1 -->
+            <div class="squad-card">
+                <div class="squad-header">
+                    Первый отряд <span>БОЕВКА 1</span>
+                </div>
+                <ul class="squad-list">
+                    <li>
+                        <span class="role role-leader">👑 Лидер</span>
+                        <span class="nickname name-leader">Infern1kys</span>
+                    </li>
+                    <li>
+                        <span class="role role-officer">Зам.Лидера</span>
+                        <span class="nickname">QQWQW</span>
+                    </li>
+                    <li><span class="role role-member">Боец</span><span class="nickname">MadgicCristal</span></li>
+                    <li><span class="role role-member">Боец</span><span class="nickname">POP_</span></li>
+                    <li><span class="role role-member">Боец</span><span class="nickname">XtracT</span></li>
+                    <li><span class="role role-reserve">Запас</span><span class="nickname">Jahpanzer</span></li>
+                </ul>
+            </div>
+
+            <!-- ОТРЯД 2: БОЕВКА 2 -->
+            <div class="squad-card">
+                <div class="squad-header">
+                    Второй отряд <span>БОЕВКА 2</span>
+                </div>
+                <ul class="squad-list">
+                    <li>
+                        <span class="role role-leader">👑 Лидер</span>
+                        <span class="nickname name-leader">oJDHo</span>
+                    </li>
+                    <li>
+                        <span class="role role-officer">Зам.Лидера</span>
+                        <span class="nickname">Dr_Pilulka</span>
+                    </li>
+                    <li><span class="role role-member">Боец</span><span class="nickname">NikitaBulba</span></li>
+                    <li><span class="role role-member">Боец</span><span class="nickname">GHHJR</span></li>
+                    <li><span class="role role-member">Боец</span><span class="nickname">FurryDoter</span></li>
+                    <li><span class="role role-reserve">Запас</span><span class="nickname">MihaOO</span></li>
+                </ul>
+            </div>
+
+            <!-- ОТРЯД 3: БОЕВКА 3 -->
+            <div class="squad-card">
+                <div class="squad-header">
+                    Третий отряд <span>БОЕВКА 3</span>
+                </div>
+                <ul class="squad-list">
+                    <li>
+                        <span class="role role-leader">👑 Лидер</span>
+                        <span class="nickname name-leader">Alex_and_Steave</span>
+                    </li>
+                    <li>
+                        <span class="role role-officer">Зам.Лидера</span>
+                        <span class="nickname">Timofeyku</span>
+                    </li>
+                    <li><span class="role role-member">Боец</span><span class="nickname">Jojozef</span></li>
+                    <li><span class="role role-member">Боец</span><span class="nickname">Beryozka</span></li>
+                    <li><span class="role role-member">Боец</span><span class="nickname">Muxaidjg</span></li>
+                    <li><span class="role role-reserve">Запас</span><span class="nickname">Kyrexа</span></li>
+                    <li><span class="role role-reserve">Запас</span><span class="nickname">SKVIDI</span></li>
+                </ul>
+            </div>
+
+            <!-- ОТРЯД 4: БИОШНИКИ -->
+            <div class="squad-card">
+                <div class="squad-header">
+                    Четвертый отряд <span>БИОШНИКИ</span>
+                </div>
+                <ul class="squad-list">
+                    <li>
+                        <span class="role role-leader">👑 Лидер</span>
+                        <span class="nickname name-leader">iiokevlаr</span>
+                    </li>
+                    <li>
+                        <span class="role role-officer">Зам.Лидер</span>
+                        <span class="nickname">Megaryps</span>
+                    </li>
+                    <li><span class="role role-member">Боец</span><span class="nickname">YetiLisuy</span></li>
+                    <li><span class="role role-member">Боец</span><span class="nickname">Igorcto</span></li>
+                    <li><span class="role role-member">Боец</span><span class="nickname">Bulbashe</span></li>
+                    <li><span class="role role-reserve">Запас</span><span class="nickname">ProduktCZ</span></li>
+                    <li><span class="role role-reserve">Запас</span><span class="nickname">Vlad_xxx</span></li>
+                </ul>
+            </div>
+
+            <!-- ОТРЯД 5: РАЛИКОВ -->
+            <div class="squad-card">
+                <div class="squad-header">
+                    Пятый отряд <span>РАЛИКОВ</span>
+                </div>
+                <ul class="squad-list">
+                    <li>
+                        <span class="role role-leader">👑 Лидер</span>
+                        <span class="nickname name-leader">FLINGG</span>
+                    </li>
+                    <li>
+                        <span class="role role-officer">Зам.Лидера</span>
+                        <span class="nickname">Bravo_zero_six</span>
+                    </li>
+                    <li><span class="role role-member">Боец</span><span class="nickname">Bryan_Walker</span></li>
+                    <li><span class="role role-member">Боец</span><span class="nickname">ТЕМИН</span></li>
+                    <li><span class="role role-member">Боец</span><span class="nickname">Miha_Beast</span></li>
+                    <li><span class="role role-reserve">Запас</span><span class="nickname">Kir_Van</span></li>
+                    <li><span class="role role-reserve">Запас</span><span class="nickname">Alpha_zero_six</span></li>
+                </ul>
+            </div>
+
+        </div>
+
+        <!-- СЕКЦИЯ КАРТ (ССЫЛКИ НА ТАКТИЧЕСКИЙ ПЛАНШЕТ) -->
+        <div class="maps-section">
+            <h2 class="maps-title">🎯 Тактическое планирование</h2>
+            <p style="color: #888; margin-bottom: 20px;">Нажми на карту, чтобы открыть редактор плана</p>
+            
+            <div class="map-tags">
+                <!-- Ссылки ведут на map.html. В самой странице map.html можно выбрать нужную карту -->
+                <a href="map.html" class="map-tag">🌲 Хвойный Лес</a>
+                <a href="map.html" class="map-tag">🏭 Малая Бердовка</a>
+                <a href="map.html" class="map-tag">🏞️ Низина</a>
+            </div>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Клан [TAG]. Stalcraft: X Fan Site.</p>
+        <p>Связь в Discord: discord.gg/yourlink</p>
+    </footer>
+
+</body>
+</html>
