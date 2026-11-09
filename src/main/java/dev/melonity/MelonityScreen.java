@@ -6,6 +6,7 @@ import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.input.KeyInput;
 import net.minecraft.client.input.CharInput;
 import net.minecraft.text.Style;
+import net.minecraft.text.StyleSpriteSource;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 import org.lwjgl.glfw.GLFW;
@@ -17,7 +18,7 @@ import java.util.Locale;
 public final class MelonityScreen extends Screen {
     private static final int GREEN = 0xFF9DFF45, BG = 0xF0101311;
     private static final int SURFACE = 0xFF171C18, HOVER = 0xFF222B23, MUTED = 0xFF89948B;
-    private static final Identifier FONT = Identifier.of("melonity", "oxanium");
+    private static final StyleSpriteSource FONT = new StyleSpriteSource.Font(Identifier.of("melonity", "oxanium"));
     private static final String[] CATEGORIES = {"Combat", "Movement", "Render", "Player", "Misc", "HUD"};
 
     private final List<ModuleEntry> modules = new ArrayList<>();
