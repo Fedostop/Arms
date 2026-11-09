@@ -20,3 +20,7 @@ Open the GUI in-game with **Right Shift**.
 - Client-only entrypoint and GitHub Actions build workflow
 
 Gameplay modules are intentionally added in stages; entries shown in the GUI are UI foundations until their behavior is implemented.
+
+
+## CI verification
+Pull requests and pushes to `main` run the Java 21 Gradle build and upload the resulting mod JAR as a workflow artifact.
