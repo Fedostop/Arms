@@ -1,0 +1,8 @@
+Copyright 2019 The Oxanium Project Authors (https://github.com/sevmeyer/oxanium)
+
+This Font Software is licensed under the SIL Open Font License, Version 1.1.
+The full license text is available at https://scripts.sil.org/OFL and is included
+with the Oxanium font distribution.
+
+Oxanium was designed by Severin Meyer. It is bundled with this project under
+the SIL Open Font License 1.1.
