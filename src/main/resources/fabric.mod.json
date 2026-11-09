@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "id": "melonity",
+  "version": "${version}",
+  "name": "Melonity Client",
+  "description": "A client-side utility and visual interface mod for Minecraft 1.21.11.",
+  "environment": "client",
+  "entrypoints": {
+    "client": [
+      "dev.melonity.MelonityClient"
+    ]
+  },
+  "depends": {
+    "fabricloader": ">=0.18.1",
+    "minecraft": "~1.21.11",
+    "java": ">=21",
+    "fabric-api": "*"
+  }
+}
