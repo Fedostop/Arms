@@ -140,7 +140,7 @@ public final class MelonityScreen extends Screen {
         return super.keyPressed(input);
     }
     @Override public boolean charTyped(CharInput input){
-        if(searchFocused&&!Character.isISOControl(input.codePoint())&&search.length()<32){search+=Character.toString(input.codePoint());scroll=0;return true;}
+        if(searchFocused&&!Character.isISOControl(input.codepoint())&&search.length()<32){search+=Character.toString(input.codepoint());scroll=0;return true;}
         return super.charTyped(input);
     }
     @Override public boolean mouseScrolled(double mx,double my,double horizontal,double vertical){
