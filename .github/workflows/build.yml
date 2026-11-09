@@ -22,6 +22,10 @@ jobs:
         uses: gradle/actions/setup-gradle@v4
         with:
           gradle-version: '9.2.1'
+      - name: Download Oxanium font
+        run: |
+          mkdir -p src/main/resources/assets/melonity/font
+          curl -fL --retry 3 "https://raw.githubusercontent.com/google/fonts/477b6577b3a9a9e3229eb8e0946da806d2cf822b/ofl/oxanium/Oxanium%5Bwght%5D.ttf" -o src/main/resources/assets/melonity/font/oxanium.ttf
       - name: Build mod
         run: gradle build
       - name: Upload JAR
